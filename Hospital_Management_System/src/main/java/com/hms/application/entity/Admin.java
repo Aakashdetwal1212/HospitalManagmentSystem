@@ -1,14 +1,11 @@
 package com.hms.application.entity;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,20 +19,22 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
+@ToString(callSuper = true)
+@DiscriminatorValue("admin")
 @Getter
 @Setter
 @AllArgsConstructor
-@ToString(callSuper = true)
 @NoArgsConstructor
-@DiscriminatorValue("doctor")
-public class Doctor extends HospitalStaff {
-    
-	@NotBlank(message = "Specialization should not be blank")
-	@NotNull
-	@Column(name = "specialization")
-	private String specialization;
+public class Admin extends  HospitalStaff {
 
+	@NotBlank(message = "UserName should not be blank")
+	@Column(name = "username")
 	@NotNull
-	@Column(name = "experience")
-	private int experience;
+	private String userName;
+
+	@NotBlank(message = "Password should not be blank")
+	@Column(name = "password")
+	@NotNull
+	private String password;
+	
 }

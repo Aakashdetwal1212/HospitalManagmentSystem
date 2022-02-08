@@ -3,34 +3,28 @@ package com.hms.application.entity;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@ToString(callSuper = true)
-@DiscriminatorValue("nurse")
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString(callSuper = true)
 @NoArgsConstructor
-public class Nurse extends HospitalStaff{
+@DiscriminatorValue("staff")
+public class Staff extends HospitalStaff {
 
-	@NotBlank(message = "Qualification should not be blank")
+	@NotBlank(message = "SubDepartment should not be blank")
 	@NotNull
-	@Column(name = "qualification")
-	private String qualification;
+	@Column(name = "sub_department")
+	private String subDepartment;
 	
 	@NotNull
 	@Column(name = "experience")
